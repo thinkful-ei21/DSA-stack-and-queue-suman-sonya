@@ -33,16 +33,41 @@ class Stack {
   }
 }
 
+function peek(stack) {
+  // if stack is empty return error message
+  if (stack.top === null){
+    throw new Error('the stack is empty')
+  }
+  // log out the top item
+  console.log(stack.top.data);
+}
+
+function display(stack) {
+  // if stack is empty, return error message
+  if (stack.top === null) {
+    throw new Error('the stack is empty')
+  }
+  // log out the full stack
+  console.log(util.inspect(stack, false, null));
+}
+
 function main() {
-  const starTreck = new Stack;
+  const starTrek = new Stack;
 
-  starTreck.push('Kirk');
-  starTreck.push('Spock');
-  starTreck.push('McCoy');
-  starTreck.push('Scotty')
+  starTrek.push('Kirk');
+  starTrek.push('Spock');
+  starTrek.push('McCoy');
+  starTrek.push('Scotty');
 
-  console.log(util.inspect(starTreck, false, null));
+  peek(starTrek);
+  display(starTrek);
+
+  starTrek.pop();
+  starTrek.pop();
+
+  display(starTrek);
 }
 
 main();
+
 
