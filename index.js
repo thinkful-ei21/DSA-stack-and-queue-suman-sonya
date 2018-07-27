@@ -94,9 +94,37 @@ function is_palindrome(s) {
 }
 
 // true, true, true
-console.log(is_palindrome("dad"));
-console.log(is_palindrome("A man, a plan, a canal: Panama"));
-console.log(is_palindrome("1001"));
-console.log(is_palindrome("Tauhida"));
+// console.log(is_palindrome("dad"));
+// console.log(is_palindrome("A man, a plan, a canal: Panama"));
+// console.log(is_palindrome("1001"));
+// console.log(is_palindrome("Tauhida"));
+
+/////////////////////////////////// matching parentheses /////////////////////////////////
+
+function matchingParens(exp) {
+  const stack = new Stack;
+  const countStack = new Stack;
+  // push each element of exp into stack starting with 0 index
+  // if the char is ( push its count to countStack
+  // if the char is ) pop a value out of countStack
+  for (let i = 0; i < exp.length; i++) {
+    if (exp.charAt(i) === '(') {
+      countStack.push(i);
+    } 
+    if (exp.charAt(i) === ')' && countStack.top !== null) {
+      countStack.pop(i);
+    }
+    if (exp.charAt(i) === ')' && countStack.top === null) {
+      console.log(`the ')' at location ${i + 1} is missing its match`)
+    }
+  }
+  while (countStack.top !== null) {
+    console.log(`the '(' at location ${countStack.top.data + 1} is missing its match`);
+    countStack.pop();
+  }
+
+}
+
+matchingParens('1+(1*1)+(1+1((');
 
 
