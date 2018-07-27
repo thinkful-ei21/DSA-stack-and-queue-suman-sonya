@@ -51,6 +51,8 @@ function display(stack) {
   console.log(util.inspect(stack, false, null));
 }
 
+////////////////////////// starTrek stack //////////////////////////////
+
 function main() {
   const starTrek = new Stack;
 
@@ -68,6 +70,33 @@ function main() {
   display(starTrek);
 }
 
-main();
+// main();
+
+/////////////////////////////// palindrome /////////////////////////////////////
+
+function is_palindrome(s) {
+  const stack = new Stack;
+  s = s.toLowerCase().replace(/[^a-zA-Z0-9]/g, "");
+  // loop through string
+  for (let i = 0; i < s.length; i++) {
+    // push each letter into stack
+    stack.push(s.charAt(i))
+  }
+  // pop each letter out and track the returned values
+  let sReverse = '';
+  while (stack.top !== null) {
+    sReverse += stack.pop();
+  }
+  if (s === sReverse) {
+    return true;
+  }
+  // if string === popped value string it's a palindrome! 
+}
+
+// true, true, true
+console.log(is_palindrome("dad"));
+console.log(is_palindrome("A man, a plan, a canal: Panama"));
+console.log(is_palindrome("1001"));
+console.log(is_palindrome("Tauhida"));
 
 
